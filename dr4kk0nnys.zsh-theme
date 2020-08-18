@@ -1,20 +1,20 @@
 username() {
-    echo "$fg_bold[yellow]%}%n"
+   echo "%{$fg_bold[yellow]%}%n %f"
 }
 
 directory() {
-   echo "%{$fg_bold[cyan]%}in %{$fg_bold[white]%}%3~"
+   echo "%{$fg_bold[cyan]%}in %{$fg_bold[white]%}%3~ %f"
 }
 
 arrow() {
-   echo "\n$fg_bold[green]%}❱"
+   echo "%{$fg_bold[green]%}❱%{$fg_bold[magenta]%} %f"
 }
 
 # set the git_prompt_info text
 
-ZSH_THEME_GIT_PROMPT_PREFIX="    ↳ "
-ZSH_THEME_GIT_PROMPT_SUFFIX=""
-ZSH_THEME_GIT_PROMPT_DIRTY=" 💥 "
+ZSH_THEME_GIT_PROMPT_PREFIX=" %{$fg_bold[red]%}("
+ZSH_THEME_GIT_PROMPT_SUFFIX=")"
+ZSH_THEME_GIT_PROMPT_DIRTY="✗"
 ZSH_THEME_GIT_PROMPT_CLEAN=""
 # ZSH_THEME_GIT_PROMPT_ADDED="⚡"
 # ZSH_THEME_GIT_PROMPT_MODIFIED="✭"
@@ -25,5 +25,6 @@ ZSH_THEME_GIT_PROMPT_CLEAN=""
 # ZSH_THEME_GIT_PROMPT_AHEAD="⚡"
 
 # putting it all together
-PROMPT='$(username) %B$(directory) $(git_prompt_info) $(arrow) '
+PROMPT='$(username)$(directory)$(git_prompt_info)
+$(arrow)'
 RPROMPT=''
